@@ -25,7 +25,7 @@ def extract_sitemap_data(xml_file_path, num_urls=200):
     return all_products
 
 def main():
-    xml_file_path = 'sitemap_products_20.xml'  # Replace with your XML file path
+    xml_file_path = 'sitemap_products_1.xml'  # Replace with your XML file path
     random_entries = extract_sitemap_data(xml_file_path)
 
     for entry in random_entries:
