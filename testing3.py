@@ -41,7 +41,7 @@ def wait_for_run_completion(thread_id, run_id, timeout=300):
     raise TimeoutError("Run did not complete within the specified timeout.")
 
 def get_internal_links(thread_id, blog_post_idea):
-    get_request = f"Read the product URLs to find suitable products for articles. Never invent links or product images Choose 5 internal links and 5 product image urls that are relevant to {blog_post_idea}. For example for exotic leather shoes look for crocodile shoes etc. For suit articles look for suits.'."
+    get_request = f"Read the product URLs and titles to find suitable products for articles. Never invent links or product images Choose 5 internal links and 5 product image urls that are relevant to {blog_post_idea}. For example for pet feeders look for dog food or cat food feeders etc. For dog toy articles look for dog toys.'."
     client.beta.threads.messages.create(thread_id=thread_id, role="user", content=get_request)
     get_request_run = client.beta.threads.runs.create(thread_id=thread_id, assistant_id=assistant.id)
     wait_for_run_completion(thread_id, get_request_run.id)
@@ -63,7 +63,7 @@ def process_blog_post(thread_id, blog_post_idea):
 
     article = None
     if outline:
-        article_request = f"Use grade 7 level US English. Do not use overly creative or crazy language. Write as if writing for The Guardian newspaper.. Just give information. Don't write like a magazine. Use simple language. Do not invent image links. You are writing from a first person plural perspective for the business, refer to it in the first person plural. Add a key takeaway table at the top of the article, summarzing the main points. Never invent links or product images Choose 5 internal links and 5 product images that are relevant to an article and then Write a detailed article based on the following outline:\n{outline}, but put it into a proper title which invites a click, Title should be around 60 characters. Include the product images and internal links naturally and with relevance inside the article. Use markdown formatting and ensure to use tables and lists to add to formatting. Use 3 relevant product images and internal links maximum. Never invent any internal links."
+        article_request = f"Use grade 7 level US English. Do not use overly creative or crazy language. Write as if writing for The Guardian newspaper.. Just give information. Don't write like a magazine. Use simple language. Do not invent image links. You are writing from a first person plural perspective for the business, refer to it in the first person plural. Add a key takeaway table at the top of the article, summarzing the main points. Never invent links or product images Choose 5 internal links and 5 product images that are relevant to an article and then Write a detailed article based on the following outline:\n{outline}, but put it into a proper title which invites a click, Title should be around 60 characters. Include the product images and internal links naturally and with relevance inside the article. Use markdown formatting and ensure to use tables and lists to add to formatting. Use 3 relevant product images and internal links maximum. Never invent any internal links or product images."
         client.beta.threads.messages.create(thread_id=thread_id, role="user", content=article_request)
         article_run = client.beta.threads.runs.create(thread_id=thread_id, assistant_id=assistant.id)
         wait_for_run_completion(thread_id, article_run.id)
