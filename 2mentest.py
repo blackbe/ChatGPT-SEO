@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 import random
 
-def extract_sitemap_data(xml_file_path, num_urls=200):
+def extract_sitemap_data(xml_file_path, num_urls=300):
     tree = ET.parse(xml_file_path)
     root = tree.getroot()
 
