@@ -30,3 +30,4 @@ The content comes out in a weird format, but you can easily use another script t
 
 
 
+# ChatGPT-SEO
