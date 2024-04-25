@@ -5,7 +5,7 @@ import csv
 from tqdm import tqdm
 
 # Set your OpenAI API key
-OPENAI_API_TOKEN = "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"
+OPENAI_API_TOKEN = "not_really_my_key"
 os.environ["OPENAI_API_KEY"] = OPENAI_API_TOKEN
 
 # Initialize the OpenAI client
